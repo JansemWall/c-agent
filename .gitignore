@@ -1,0 +1,3 @@
+infra_manager/.env
+infra_manager/db.sqlite3
+*.cpython-*

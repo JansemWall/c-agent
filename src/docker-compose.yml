@@ -1,0 +1,25 @@
+services:
+  ckrof-agent:
+    image: ckrof-agent:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ckrof_agent_live
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    environment:
+      - RABBITMQ_URL=amqp://ckrof_admin:SuperSecurePassword123@192.168.100.4:5672/agent_monitor
+      - CKROF_QUEUE_NAME=telemetry_production
+      - CKROF_SECRET_TOKEN=my-super-secure-prod-token
+      - CKROF_AGENT_PORT=9090
+      - CKROF_SCAN_INTERVAL=30
+      - CKROF_NODE_NAME=jansem-pc
+      - CKROF_NODE_IP=192.168.100.4
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    
+    # Optional: If you ever want to test this image locally against a local dev RabbitMQ,
+    # uncomment the lines below to re-enable local host machine routing:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
