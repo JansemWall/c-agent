@@ -86,7 +86,7 @@ func main() {
 		payload := models.Payload{
 			Host: models.HostInfo{
 				Hostname: hostname,
-				IP:       ip,
+				IP:       ipAddress,
 			},
 			Timestamp:  time.Now().Format(time.RFC3339),
 			Containers: containers,
