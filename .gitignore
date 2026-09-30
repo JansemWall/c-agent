@@ -1,3 +1,8 @@
+.env
+.env.*
+!.env.example
+*.env
 infra_manager/.env
 infra_manager/db.sqlite3
 *.cpython-*
+src/cmd/agent/c-agent
